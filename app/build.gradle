@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.abid.sqlliteandroom"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion
+    implementation 'com.android.support.constraint:constraint-layout:' + constraintLayoutVersion
+    testImplementation 'junit:junit:' + rootProject.junitVersion
+    compile 'com.jakewharton:butterknife:' + rootProject.butterKnifeVersion
+    //Dagger2
+    annotationProcessor 'com.google.dagger:dagger-compiler:' + rootProject.deggerVersion
+    compile 'com.google.dagger:dagger:' + rootProject.deggerVersion
+    provided 'javax.annotation:jsr250-api:' + rootProject.javaXJsrVersion
+    //Retrofit
+    compile 'com.squareup.retrofit2:retrofit:' + rootProject.retrofitVersion
+    //OkHttp
+    compile 'com.squareup.okhttp3:okhttp:' + rootProject.okhttpVersion
+    compile 'com.squareup.okio:okio:1.13.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.okhttpVersion
+    //Gson
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.squareup.retrofit2:converter-gson:' + rootProject.retrofitVersion
+    //room
+    compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion
+    compile 'android.arch.lifecycle:extensions:' + rootProject.archRoomVersion
+    annotationProcessor 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion
+    annotationProcessor 'com.jakewharton:butterknife-compiler:' + rootProject.butterKnifeVersion
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.android.support:recyclerview-v7:'+ rootProject.supportLibVersion
+    //rx
+    compile 'io.reactivex.rxjava2:rxandroid:'+rootProject.rxAndroidVersion
+    compile 'io.reactivex.rxjava2:rxjava:'+rootProject.rxJavaVersion
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    compile 'com.github.bumptech.glide:glide:4.2.0'
+}
