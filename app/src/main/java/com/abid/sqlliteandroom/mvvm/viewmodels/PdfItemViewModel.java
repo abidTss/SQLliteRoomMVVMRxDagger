@@ -5,7 +5,6 @@ import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
-import com.abid.sqlliteandroom.R;
 import com.abid.sqlliteandroom.mvvm.model.PdfItemModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -38,6 +37,10 @@ public class PdfItemViewModel extends BaseObservable {
     public void setPdfItem(PdfItemModel pdfItemModel){
         this.pdfItemModel=pdfItemModel;
         notifyChange();
+    }
+
+    public String getTCPDescription(){
+        return pdfItemModel.TCPDescription;
     }
 
     public String getImageUrl() {

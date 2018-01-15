@@ -19,4 +19,8 @@ public class PdfItemModel {
     @SerializedName("Teachday")
     @Expose
     public String teachDay;
+
+    @SerializedName("TCPDescription")
+    @Expose
+    public String TCPDescription;
 }
